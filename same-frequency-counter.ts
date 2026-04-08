@@ -16,31 +16,33 @@
  * @returns true if arr1 squared values match arr2, false otherwise
  */
 function sameFrequencyCounter(arr1: number[], arr2: number[]): boolean {
-    if (arr1.length !== arr2.length){
+    if (arr1.length !== arr2.length) {
         return false;
     };
+    
     const frequencyCounterOne: { [key: number]: number } = {};
     const frequencyCounterTwo: { [key: number]: number } = {};
 
-    for (const val of arr1){
+    for (const val of arr1) {
         frequencyCounterOne[val] = (frequencyCounterOne[val] || 0) + 1;
-    }
-    for (const val of arr2){
+    };
+
+    for (const val of arr2) {
         frequencyCounterTwo[val] = (frequencyCounterTwo[val] || 0) + 1;
     };
 
-    for (const key in frequencyCounterOne){
+    for (const key in frequencyCounterOne) {
         const numKey = Number(key);
-        if (!(numKey ** 2 in frequencyCounterTwo)){
+        if (!(numKey ** 2 in frequencyCounterTwo)) {
             return false;
         };
 
-        if (frequencyCounterOne[numKey ** 2] !== frequencyCounterTwo[numKey]){
+        if (frequencyCounterOne[numKey ** 2] !== frequencyCounterTwo[numKey]) {
             return false;
         };
     }
     return true;
 }
 
-console.log(sameFrequencyCounter([1,2,3], [9,1,4]));
-console.log(sameFrequencyCounter([3,5,7], [25,10,49]));
+console.log(sameFrequencyCounter([1, 2, 3], [9, 1, 4]));
+console.log(sameFrequencyCounter([3, 5, 7], [25, 10, 49]));
